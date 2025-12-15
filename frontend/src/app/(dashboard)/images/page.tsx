@@ -173,10 +173,10 @@ export default function ImagesPage() {
                                     <select
                                         value={style}
                                         onChange={(e) => setStyle(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-violet-500 focus:outline-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 focus:border-violet-500 focus:outline-none text-white"
                                     >
                                         {styles.map((s) => (
-                                            <option key={s.id} value={s.id}>
+                                            <option key={s.id} value={s.id} className="bg-neutral-900 text-white">
                                                 {s.name}
                                             </option>
                                         ))}
@@ -217,10 +217,10 @@ export default function ImagesPage() {
                                     <select
                                         value={platform}
                                         onChange={(e) => setPlatform(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-violet-500 focus:outline-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 focus:border-violet-500 focus:outline-none text-white"
                                     >
                                         {platforms.map((p) => (
-                                            <option key={p.id} value={p.id}>
+                                            <option key={p.id} value={p.id} className="bg-neutral-900 text-white">
                                                 {p.name}
                                             </option>
                                         ))}
@@ -232,10 +232,10 @@ export default function ImagesPage() {
                                     <select
                                         value={style}
                                         onChange={(e) => setStyle(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-violet-500 focus:outline-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 focus:border-violet-500 focus:outline-none text-white"
                                     >
                                         {styles.map((s) => (
-                                            <option key={s.id} value={s.id}>
+                                            <option key={s.id} value={s.id} className="bg-neutral-900 text-white">
                                                 {s.name}
                                             </option>
                                         ))}
@@ -265,10 +265,10 @@ export default function ImagesPage() {
                                     <select
                                         value={industry}
                                         onChange={(e) => setIndustry(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-violet-500 focus:outline-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 focus:border-violet-500 focus:outline-none text-white"
                                     >
                                         {industries.map((ind) => (
-                                            <option key={ind} value={ind}>
+                                            <option key={ind} value={ind} className="bg-neutral-900 text-white">
                                                 {ind}
                                             </option>
                                         ))}
@@ -280,10 +280,10 @@ export default function ImagesPage() {
                                     <select
                                         value={style}
                                         onChange={(e) => setStyle(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-violet-500 focus:outline-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 focus:border-violet-500 focus:outline-none text-white"
                                     >
                                         {styles.map((s) => (
-                                            <option key={s.id} value={s.id}>
+                                            <option key={s.id} value={s.id} className="bg-neutral-900 text-white">
                                                 {s.name}
                                             </option>
                                         ))}
