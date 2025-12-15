@@ -90,6 +90,9 @@ async def generate_video(
     return gen
 
 
+from ...services.local_ai_service import local_ai
+# from ...services.elevenlabs_service import elevenlabs_service  # Disabled for local mode
+
 @router.post("/presenter", response_model=GenerationResponse)
 async def generate_presenter_video(
     request: PresenterVideoRequest,
@@ -97,7 +100,7 @@ async def generate_presenter_video(
     db: AsyncSession = Depends(get_db)
 ):
     """
-    Generate a video with AI presenter.
+    Generate a video with AI presenter using Local Engine (Wav2Lip).
     Cost: 100 credits
     """
     credits_cost = settings.CREDITS_VIDEO_PRESENTER
@@ -116,8 +119,18 @@ async def generate_presenter_video(
     )
     
     try:
-        # TODO: Integrate HeyGen API
-        output_url = f"https://placeholder.video/{gen.id}"  # Placeholder
+        # 1. Generate Audio (TTS)
+        audio_url = await local_ai.generate_audio(
+            text=request.script,
+            voice_id=request.voice_id
+        )
+        
+        # 2. Generate Video (LipSync)
+        # In a real app, we would handle background merging here too
+        output_url = await local_ai.generate_lip_sync(
+            audio_url=audio_url,
+            avatar_id=request.avatar_id
+        )
         
         gen.status = "completed"
         gen.output_url = output_url
@@ -143,7 +156,7 @@ async def generate_voiceover(
     db: AsyncSession = Depends(get_db)
 ):
     """
-    Generate AI voiceover from text.
+    Generate AI voiceover from text using Local TTS.
     Cost: 10 credits
     """
     credits_cost = settings.CREDITS_VOICEOVER
@@ -158,10 +171,9 @@ async def generate_voiceover(
     )
     
     try:
-        output_url = await elevenlabs_service.generate_speech(
+        output_url = await local_ai.generate_audio(
             text=request.text,
-            voice_id=request.voice,
-            speed=request.speed
+            voice_id=request.voice
         )
         
         gen.status = "completed"

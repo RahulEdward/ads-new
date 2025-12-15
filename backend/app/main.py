@@ -43,6 +43,12 @@ app.include_router(videos.router, prefix=settings.API_V1_PREFIX)
 app.include_router(users.router, prefix=settings.API_V1_PREFIX)
 app.include_router(admin.router, prefix=settings.API_V1_PREFIX)
 
+# Mount Static Files for Local Generations
+from fastapi.staticfiles import StaticFiles
+import os
+os.makedirs("static/generations", exist_ok=True)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 @app.get("/")
 async def root():
