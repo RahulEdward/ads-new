@@ -20,3 +20,13 @@ aiofiles==23.2.1
 Pillow==10.2.0
 openai==1.10.0
 elevenlabs==0.2.27
+
+# Local AI Dependencies
+edge-tts==6.1.9
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+opencv-python>=4.9.0
+librosa>=0.10.1
+scipy>=1.11.0
+tqdm>=4.66.0

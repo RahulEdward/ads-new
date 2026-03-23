@@ -23,6 +23,12 @@ def generate_lipsync(face_image, audio_file, output_file, checkpoint_path):
         print("Please clone the repo: git clone https://github.com/Rudrabha/Wav2Lip")
         sys.exit(1)
 
+    if not os.path.exists(checkpoint_path):
+        print(f"Error: Checkpoint not found at {checkpoint_path}")
+        print("Please download the Wav2Lip model (wav2lip.pth) and place it in the 'checkpoints' folder.")
+        print("Download Link: https://drive.google.com/file/d/1tZpDWXz49W6wCc-FULxSeqAFGsW5hU7O/view?usp=sharing")
+        sys.exit(1)
+
     # Construct command for Wav2Lip
     # python inference.py --checkpoint_path <chk> --face <img/vid> --audio <audio> --outfile <out>
     
